@@ -1,3 +1,7 @@
+package Manager;
+
+import Model.Student;
+
 import java.io.*;
 import java.util.*;
 
@@ -34,7 +38,7 @@ public class StudentManager
          System.out.println("Deleted Successfully");
      }
      else
-         System.out.println("Couldn't Find The Student");
+         System.out.println("Couldn't Find The Model.Student");
    }
 
     public void updateStudent(Student s)
@@ -48,7 +52,7 @@ public class StudentManager
                 return;
             }
         }
-        System.out.println("Couldn't Update The Student");
+        System.out.println("Couldn't Update The Model.Student");
     }
 
     public void saveStudentsToFile(String fileName) throws IOException
