@@ -1,4 +1,4 @@
-package Manager;
+package Manager; //Admin panel
 
 import Model.Student;
 
