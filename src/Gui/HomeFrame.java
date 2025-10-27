@@ -23,25 +23,27 @@ public class HomeFrame extends JFrame {
 
         // Navigation Panel
         JPanel navPanel = new JPanel();
-        navPanel.setLayout(new GridLayout(5, 1, 10, 10));
+        navPanel.setLayout(new GridLayout(6, 1, 10, 10));
         navPanel.setPreferredSize(new Dimension(180, 600));
 
         JButton addBtn = new JButton("Add Student");
         JButton viewBtn = new JButton("View Students");
         JButton updateBtn = new JButton("Update Student");
         JButton deleteBtn = new JButton("Delete Student");
+        JButton searchBtn = new JButton("Search Student");
         JButton exitBtn = new JButton("Logout");
+
 
         navPanel.add(addBtn);
         navPanel.add(viewBtn);
         navPanel.add(updateBtn);
         navPanel.add(deleteBtn);
+        navPanel.add(searchBtn);
         navPanel.add(exitBtn);
 
         // Main Panel
         mainPanel = new JPanel(new BorderLayout());
         mainPanel.add(new JLabel("Welcome! Choose an action from left menu."), BorderLayout.CENTER);
-
         add(navPanel, BorderLayout.WEST);
         add(mainPanel, BorderLayout.CENTER);
 
@@ -50,6 +52,7 @@ public class HomeFrame extends JFrame {
         viewBtn.addActionListener(e -> switchPanel(new ViewStudentsPanel(manager)));
         updateBtn.addActionListener(e -> switchPanel(new UpdateStudentPanel(manager)));
         deleteBtn.addActionListener(e -> switchPanel(new DeleteStudentPanel(manager)));
+        searchBtn.addActionListener(e -> switchPanel(new SearchStudentPanel(manager)));
 
         exitBtn.addActionListener(e -> {
             JOptionPane.showMessageDialog(this, "Logged out!");

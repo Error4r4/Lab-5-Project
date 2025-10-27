@@ -89,6 +89,12 @@ import Model.Student;
                     return;
                 }
 
+                // ✅ تحقق إذا كان الـ ID موجود بالفعل
+                if (manager.searchById(id) != null) {
+                    showMessage("A student with this ID already exists!");
+                    return; // إيقاف العملية
+                }
+
                 Student s = new Student(id, name, age, gender, department, gpa);
                 manager.addStudent(s);
                 showMessage("Student added successfully!");
