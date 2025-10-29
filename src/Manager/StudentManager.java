@@ -6,15 +6,15 @@ import java.util.*;
 
 public class StudentManager {
     private ArrayList<Student> students = new ArrayList<>();
-    private final String FILE_NAME = "Students.txt"; // 👈 ملف الحفظ
+    private final String FILE_NAME = "Students.txt";
 
     public StudentManager() {
-        loadFromFile(); // 👈 تحميل تلقائي عند تشغيل البرنامج
+        loadFromFile();
     }
 
     public void addStudent(Student s) {
         students.add(s);
-        saveStudentsToFile(); // 👈 نحفظ التعديل مباشرة
+        saveStudentsToFile();
     }
 
     public ArrayList<Student> getAllStudents() {
@@ -34,7 +34,7 @@ public class StudentManager {
         if (s != null) {
             students.remove(s);
             System.out.println("Deleted Successfully");
-            saveStudentsToFile(); // 👈 حفظ بعد الحذف
+            saveStudentsToFile();
         } else {
             System.out.println("Couldn't Find The Student");
         }
@@ -45,14 +45,13 @@ public class StudentManager {
             if (students.get(i).getId() == s.getId()) {
                 students.set(i, s);
                 System.out.println("Updated Successfully");
-                saveStudentsToFile(); // 👈 حفظ بعد التحديث
+                saveStudentsToFile();
                 return;
             }
         }
         System.out.println("Couldn't Update The Student");
     }
 
-    // ✅ حفظ كل الطلاب في الملف
     private void saveStudentsToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
             for (Student s : students) {
@@ -67,7 +66,6 @@ public class StudentManager {
         }
     }
 
-    // ✅ تحميل الطلاب من الملف (يتجاهل الأسطر الفاسدة)
     public void loadFromFile() {
         File file = new File(FILE_NAME);
         if (!file.exists()) {
