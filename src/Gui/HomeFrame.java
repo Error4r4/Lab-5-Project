@@ -43,7 +43,7 @@ public class HomeFrame extends JFrame {
 
         // Main Panel
         mainPanel = new JPanel(new BorderLayout());
-        mainPanel.add(new JLabel("Welcome! Choose an action from left menu."), BorderLayout.CENTER);
+        mainPanel.add(new JLabel("Welcome! Choose an action from left menu."), BorderLayout.LINE_START);
         add(navPanel, BorderLayout.WEST);
         add(mainPanel, BorderLayout.CENTER);
 

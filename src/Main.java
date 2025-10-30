@@ -1,9 +1,5 @@
 import Manager.StudentManager;
-
 import java.io.IOException;
-
-import Gui.HomeFrame;
-
 import javax.swing.*;
 
 public class Main {
