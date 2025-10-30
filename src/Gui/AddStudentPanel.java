@@ -77,26 +77,45 @@ import Model.Student;
 
         private void addStudentAction() {
             try {
-                int id = Integer.parseInt(idField.getText().trim());
+                String idText = idField.getText().trim();
                 String name = nameField.getText().trim();
-                int age = Integer.parseInt(ageField.getText().trim());
-                String gender = (String) genderBox.getSelectedItem();
+                String ageText = ageField.getText().trim();
                 String department = departmentField.getText().trim();
-                double gpa = Double.parseDouble(gpaField.getText().trim());
+                String gpaText = gpaField.getText().trim();
+                String gender = (String) genderBox.getSelectedItem();
 
-                if (name.isEmpty() || department.isEmpty()) {
-                    showMessage("Please fill all fields!");
+                if (idText.isEmpty() || name.isEmpty() || ageText.isEmpty() ||
+                        department.isEmpty() || gpaText.isEmpty()) {
+                    showMessage("All fields must be filled!");
                     return;
                 }
 
-                // ✅ تحقق إذا كان الـ ID موجود بالفعل
+                int id = Integer.parseInt(idText);
+                int age = Integer.parseInt(ageText);
+                double gpa = Double.parseDouble(gpaText);
+
+                if (id <= 0) {
+                    showMessage("ID must be a positive number!");
+                    return;
+                }
+                if (age <= 0) {
+                    showMessage("Age must be a positive number!");
+                    return;
+                }
+
+                if (gpa < 0.0 || gpa > 4.0) {
+                    showMessage("GPA must be between 0.0 and 4.0!");
+                    return;
+                }
+
                 if (manager.searchById(id) != null) {
                     showMessage("A student with this ID already exists!");
-                    return; // إيقاف العملية
+                    return;
                 }
 
                 Student s = new Student(id, name, age, gender, department, gpa);
                 manager.addStudent(s);
+
                 showMessage("Student added successfully!");
                 clearFields();
 

@@ -11,6 +11,5 @@ public class Main {
         SwingUtilities.invokeLater(() -> new Gui.LoginFrame());
         StudentManager manager = new StudentManager();
         manager.loadFromFile();
-        new HomeFrame(manager);
     }
 }
